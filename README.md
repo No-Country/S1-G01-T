@@ -5,8 +5,8 @@ DIGILEARN es una aplicación web educativa basada en los métodos de Glenn Doman
 
 ## Equipo de desarrollo
 
-- Aperlo, María Agustina (FullStack Developer)
-- Dante (UX/UI)
-- Franchi, Maya (FullStack Developer)
-- García, Javier (FullStack Developer)
-- Merchan, Jonathan (FullStack Developer)
+- [Aperlo, María Agustina (FullStack Developer)](https://github.com/magustinaperlo)
+- [Dante (UX/UI)](https://github.com/maurif)
+- [Franchi, Maya (FullStack Developer)](https://github.com/mFranchi92)
+- [García, Javier (FullStack Developer)](https://github.com/RedFoxArg)
+- [Merchan, Jonathan (FullStack Developer)](https://github.com/JonathanMerchan)
