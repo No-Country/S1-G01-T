@@ -1,6 +1,24 @@
 # Digilearn
 
-DIGILEARN es una aplicación web educativa basada en los métodos de Glenn Doman*, para mejorar el lenguaje de niños y niñas que poseen trastornos referidos al lenguaje, específicamente aquellos relacionados con la dislexia.
+**DIGILEARN** es una aplicación web educativa basada en los métodos de Glenn Doman, para mejorar el lenguaje de niños y niñas que poseen trastornos referidos al lenguaje, específicamente aquellos relacionados con la dislexia.
+<br/>
+<br/>
+
+## Tecnologías utilizadas en el proyecto
+<ul>
+  <li> Asp.Net MVC </li>
+  <li> C# </li>
+  <li> Net Core 5 </li>
+  <li> Entity Framework Core </li>
+  <li> LinQ </li>
+  <li> SQL Server </li>
+  <li> Razor pages </li>
+  <li> Javascript </li>
+  <li> Bootstrap 5 </li>
+  <li> HTML 5 </li>
+  <li> CSS 3 </li>
+  <br/>
+</ul>
 
 
 ## Equipo de desarrollo
