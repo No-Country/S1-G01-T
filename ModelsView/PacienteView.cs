@@ -1,17 +1,15 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
-namespace DigiLearn.Models
+namespace DigiLearn.ModelsView
 {
-    public class Paciente
+    public class PacienteView
     {
-        [Key]
         public int PacienteId { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public int Edad { get; set; }
         public string Diagnostico { get; set; }
-        public Guid ProfesionalId { get; set; }
+        //public Guid ProfesionalId { get; set; }
         public DateTime FechaCreacion { get; set; }
         public bool Estado { get; set; }
 

@@ -1,19 +1,49 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DigiLearn.Data;
+using DigiLearn.ModelsView;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace DigiLearn.Controllers
 {
     public class PacienteController : Controller
     {
-        // GET: PacienteController
-        public ActionResult Index()
+        private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
+
+        public PacienteController(ApplicationDbContext context, UserManager<IdentityUser> UserManager) 
         {
-            return View();
+            _context = context;
+            _userManager = UserManager;
+        }
+        // GET: PacienteController
+        public async Task<ActionResult> Index()
+        {
+            List<PacienteView> LisPacientes = new List<PacienteView>();
+            var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+            var LP = _context.Pacientes.Where(z=> z.ProfesionalId.Equals(currentUser) && z.Estado.Equals(true));
+            foreach (var item in LP)
+            {
+                PacienteView PacV = new PacienteView();
+                PacV.PacienteId = item.PacienteId;
+                PacV.Nombre = item.Nombre;
+                PacV.Apellido = item.Apellido;
+                PacV.Edad = item.Edad;
+                PacV.Diagnostico = item.Diagnostico;
+                PacV.FechaCreacion = item.FechaCreacion;
+                PacV.Estado = item.Estado;
+                LisPacientes.Add(PacV);
+            }
+            return View(LisPacientes);
         }
 
         // GET: PacienteController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult DetallePaciente(int id)
         {
+
             return View();
         }
 

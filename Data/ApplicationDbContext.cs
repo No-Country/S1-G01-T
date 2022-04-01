@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using DigiLearn.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,12 @@ namespace DigiLearn.Data
             : base(options)
         {
         }
+
+        public DbSet<Paciente> Pacientes { get; set; }
+        public DbSet<Respuestas> Respuestas { get; set; }
+        //public DbSet<Preguntas> Preguntas { get; set; }
+        //public DbSet<>  { get; set; }
+
+
     }
 }
