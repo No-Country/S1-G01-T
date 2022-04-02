@@ -10,8 +10,9 @@ namespace DigiLearn.Models
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public int Edad { get; set; }
+        //public int DNI { get; set; }
         public string Diagnostico { get; set; }
-        public Guid ProfesionalId { get; set; }
+        public string ProfesionalId { get; set; }
         public DateTime FechaCreacion { get; set; }
         public bool Estado { get; set; }
 
