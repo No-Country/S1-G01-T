@@ -1,6 +1,7 @@
 ﻿using DigiLearn.Data;
 using DigiLearn.Models;
 using DigiLearn.ModelsView;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,8 +13,11 @@ using System.Threading.Tasks;
 
 namespace DigiLearn.Controllers
 {
+    
+    [Authorize]
     public class PacienteController : Controller
     {
+        
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
 
@@ -23,6 +27,9 @@ namespace DigiLearn.Controllers
             _userManager = UserManager;
         }
         // GET: PacienteController
+        [Route("~/")]
+        [Route("Paciente")]
+        [Route("Paciente/Index/")]
         public async Task<ActionResult> Index()
         {
             List<PacienteView> LisPacientes = new List<PacienteView>();

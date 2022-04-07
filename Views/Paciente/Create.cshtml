@@ -3,9 +3,7 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<!--html-->@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+
 @{
 }
 <div class="row">
@@ -13,57 +11,68 @@
         <form method="post" asp-action="CrearPaciente">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @*correccion , el renglon anterior tenia declarado "class" 2 veces , por eso no
-        habilitaba el readonly y el invisible a la fecha y hora*@
+            habilitaba el readonly y el invisible a la fecha y hora*@
 
 
-        <div class="card border-warning mb-3" style="max-width: auto;">
-            <div class="card-header">Nuevo Paciente</div>
-            <div class="card-body">
-                <h5 class="card-title">Datos Personales</h5>
+            <div class="card border-warning mb-3" style="max-width: auto;">
+                <div class="card-header">Nuevo Paciente</div>
+                <div class="card-body">
+                    <h5 class="card-title">Datos Personales</h5>
 
-                <div class="form-group">
-                    <label asp-for="Apellido" class="control-label"></label>
-                    <input asp-for="Apellido" class="form-control" />
-                    <span asp-validation-for="Apellido" class="text-danger"></span>
+                    <div class="form-group">
+                        <label asp-for="Apellido" class="control-label"></label>
+                        <input asp-for="Apellido" class="form-control" />
+                        <span asp-validation-for="Apellido" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Nombre" class="control-label"></label>
+                        <input asp-for="Nombre" class="form-control" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label asp-for="Edad" class="control-label"></label>
+                        <input asp-for="Edad" class="form-control" />
+                        <span asp-validation-for="Edad" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Diagnostico" class="control-label">Diagnóstico</label>
+                        <input asp-for="Diagnostico" class="form-control" />
+                        <span asp-validation-for="Diagnostico" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group">
+                        @*<label asp-for="Estado" class="form-check-label" for="flexCheckDefault">
+                        </label>*@
+                        <input asp-for="Estado" class="form-check-input mb-4 invisible" type="checkbox" checked="checked" id="flexCheckDefault">
+                        @*<span asp-validation-for="Estado" class="text-danger"></span>*@
+                    </div>
+
+                    @*<div class="form-group">
+                        <label asp-for="Estado" class="control-label"></label>
+                        <input asp-for="Estado" class="form-control " checked="checked" />
+                        <span asp-validation-for="Estado" class="text-danger "></span>
+                    </div>*@
+
 
                 </div>
-                <div class="form-group">
-                    <label asp-for="Nombre" class="control-label"></label>
-                    <input asp-for="Nombre" class="form-control" />
-                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                <input type="text" asp-for="FechaCreacion" class="form-control-plaintext bg-body invisible readonly " value="@DateTime.Now" />
+                <input type="text" asp-for="ProfesionalId" value="@UserManager.GetUserAsync(User).Result.Id" class="invisible" />
+                <div class="form-group text-sm-right mb-md-4 m-md-2">
+                    <input type="submit" value="Guardar" class="btn btn-outline-success" />
                 </div>
-
-
-
-                <div class="form-group">
-                    <label asp-for="Edad" class="control-label"></label>
-                    <input asp-for="Edad" class="form-control" />
-                    <span asp-validation-for="Edad" class="text-danger"></span>
-
-                </div>
-
-                <div class="form-group">
-                    <label asp-for="Diagnostico" class="control-label">Diagnóstico</label>
-                    <input asp-for="Diagnostico" class="form-control" />
-                    <span asp-validation-for="Diagnostico" class="text-danger"></span>
-
-                </div>
-                <div class="form-group">
-                <label asp-for="Estado" class="control-label"></label>
-                <input asp-for="Estado" class="form-control " checked="checked" />
-                <span asp-validation-for="Estado" class="text-danger "></span>
             </div>
 
-
-            </div>
-            <input type="text" asp-for="FechaCreacion" class="form-control-plaintext bg-body invisible readonly " value="@DateTime.Now" />
-            <input type="text" asp-for="ProfesionalId" value="@UserManager.GetUserAsync(User).Result.Id" class="invisible" />
-            <div class="form-group text-sm-right mb-md-4 m-md-2">
-                <input type="submit" value="Guardar" class="btn btn-outline-success" />
-            </div>
-        </div>
-           
         </form>
+        <div>
+            <a asp-action="Index" style="font-size: 1.2em; color: orangered"><i class="far fa-arrow-alt-circle-left"></i>Ir al Listado</a>
+        </div>
+        @*&nbsp - para el espaciado*@
 
     </div>
 </div>

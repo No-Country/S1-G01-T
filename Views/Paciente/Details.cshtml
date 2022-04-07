@@ -11,16 +11,17 @@
     <div class="card-header">Detalle del Paciente</div>
     <div class="card-body text-primary">
         <h5 class="card-title">Información Personal</h5>
-        
+
         <div class="row">
             <div class="col-6">
                 <label asp-for="FechaCreacion" class="control-label">Fecha de Ingreso</label>
                 <input class="form-control" asp-for="FechaCreacion" readonly />
             </div>
             <div class="col-6">
-                <label asp-for="Estado" class="control-label">Estado</label>
-                <input class="form-control" asp-for="Estado" readonly />
+                <label asp-for="Diagnostico" class="control-label">Diagnóstico</label>
+                <input class="form-control" asp-for="Diagnostico" readonly />
             </div>
+            
         </div>
 
         <div class="row">
@@ -35,13 +36,14 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-6">
-                <label asp-for="Diagnostico" class="control-label">Diagnóstico</label>
-                <input class="form-control" asp-for="Diagnostico" readonly />
-            </div>
+
             <div class="col-6">
                 <label asp-for="Edad" class="control-label">Edad</label>
                 <input class="form-control" asp-for="Edad" readonly />
+            </div>
+            <div class="col-6">
+                <label asp-for="Estado" class="control-label">Estado</label>
+                <input class="form-check-inline" asp-for="Estado" readonly />
             </div>
         </div>
 
@@ -53,7 +55,7 @@
     <div class="card-body text-primary">
         <h5 class="card-title">Actividades Realizadas</h5>
         @*aqui deberiamos agregar las metricas obtenidas por cada actividad realizada y su fecha
-        mas el campo de agregar observacion*@
+            mas el campo de agregar observacion*@
         <div class="row">
             <div class="col-6">
                 <label asp-for="FechaCreacion" class="control-label">Fecha Realización</label>
@@ -61,8 +63,11 @@
             </div>
             <div class="col-6">
                 <label asp-for="Estado" class="control-label">Estado</label>
-                <input class="form-control" asp-for="Estado" readonly />
+                <input class="form-check-inline" asp-for="Estado" readonly />
             </div>
         </div>
     </div>
+</div>
+<div>
+    <a asp-action="Index" style="font-size: 1.2em; color: orangered"><i class="far fa-arrow-alt-circle-left"></i>Ir al Listado</a>
 </div>
