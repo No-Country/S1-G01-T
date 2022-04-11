@@ -22,6 +22,7 @@ namespace DigiLearn.Areas.Identity.Pages.Account.Manage
             _signInManager = signInManager;
         }
 
+        [Display(Name = "Nombre de usuario")]
         public string Username { get; set; }
 
         [TempData]
@@ -33,7 +34,7 @@ namespace DigiLearn.Areas.Identity.Pages.Account.Manage
         public class InputModel
         {
             [Phone]
-            [Display(Name = "Phone number")]
+            [Display(Name = "Número de teléfono")]
             public string PhoneNumber { get; set; }
         }
 
@@ -88,7 +89,7 @@ namespace DigiLearn.Areas.Identity.Pages.Account.Manage
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "Se ha actualizado su perfil";
             return RedirectToPage();
         }
     }

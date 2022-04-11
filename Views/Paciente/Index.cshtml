@@ -1,70 +1,70 @@
 ﻿@using System.Collections
 @model IEnumerable<DigiLearn.ModelsView.PacienteView>
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+@{ 
+    ViewData["Title"] = "DigiLearn";
+}
 @{
 }
 
-    <div class="container col-12">
-        <div class="row">
-            <div class="col-sm-6">
-                <h3>Lista de Pacientes </h3>
-            </div>
-
+<div class="container col-12">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Lista de Pacientes </h3>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <a class="btn btn-outline-success" asp-action="Create" asp-controller="Paciente">Nuevo</a>
-            </div>
 
-        </div>
-        <br />
-
-        <div class="row">
-            @if (Model.Count() > 0)
-            {
-                <div class="table-responsive">
-                    <table class="table table-bordered border-primary align-middle text-center">
-
-                        @*<table class="table table-hover table-striped align-middle text-center">*@
-                        <thead class="table-secondary sticky-top">
-                            <tr>
-                                @*<th scope="col">@Html.DisplayNameFor(m => m.PacienteId)</th>*@
-                                <th scope="col">@Html.DisplayNameFor(m => m.Apellido)</th>
-                                <th scope="col">@Html.DisplayNameFor(m => m.Nombre)</th>
-                                <th scope="col">@Html.DisplayNameFor(m => m.Edad)</th>
-                                <th scope="col">@Html.DisplayNameFor(m => m.Diagnostico)</th>
-                                <th scope="col">@Html.DisplayNameFor(m => m.FechaCreacion)</th>
-
-                                <th>Acciones</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    @*<td>@item.PacienteId</td>*@
-                                    <td>@item.Apellido</td>
-                                    <td>@item.Nombre </td>
-                                    <td>@item.Edad</td>
-                                    <td>@item.Diagnostico</td>
-                                    <td>@item.FechaCreacion</td>
-                                    <!-- Botón Details -->
-                                    <td><a class="btn btn-outline-info " asp-action="Details" asp-controller="Paciente" asp-route-id="@item.PacienteId">Ver</a></td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            }
-            else
-            {
-                <p>Al momento no hay pacientes que mostrar</p>
-                @*<div class="col-sm-6">
-                        <a class="btn btn alert-success d-block" asp-action="Create" asp-controller="Pacientes">Agregar Paciente</a>
-                    </div>*@
-            }
-        </div>
     </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <a class="btn btn-outline-success" asp-action="Create" asp-controller="Paciente">Nuevo</a>
+        </div>
+
+    </div>
+    <br />
+
+    <div class="row">
+        @if (Model.Count() > 0)
+        {
+            <div class="table-responsive">
+                <table class="table table-bordered border-primary align-middle text-center">
+
+                    @*<table class="table table-hover table-striped align-middle text-center">*@
+                    <thead class="table-secondary sticky-top">
+                        <tr>
+                            @*<th scope="col">@Html.DisplayNameFor(m => m.PacienteId)</th>*@
+                            <th scope="col">@Html.DisplayNameFor(m => m.Apellido)</th>
+                            <th scope="col">@Html.DisplayNameFor(m => m.Nombre)</th>
+                            <th scope="col">@Html.DisplayNameFor(m => m.Edad)</th>
+                            <th scope="col">@Html.DisplayNameFor(m => m.Diagnostico)</th>
+                            <th scope="col">@Html.DisplayNameFor(m => m.FechaCreacion)</th>
+
+                            <th>Acciones</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                @*<td>@item.PacienteId</td>*@
+                                <td>@item.Apellido</td>
+                                <td>@item.Nombre </td>
+                                <td>@item.Edad</td>
+                                <td>@item.Diagnostico</td>
+                                <td>@item.FechaCreacion</td>
+                                <!-- Botón Details -->
+                                <td><a class="btn btn-outline-info " asp-action="Details" asp-controller="Paciente" asp-route-id="@item.PacienteId">Ver</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p>Al momento no hay pacientes que mostrar</p>
+            @*<div class="col-sm-6">
+                    <a class="btn btn alert-success d-block" asp-action="Create" asp-controller="Pacientes">Agregar Paciente</a>
+                </div>*@
+        }
+    </div>
+</div>

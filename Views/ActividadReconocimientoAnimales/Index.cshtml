@@ -1,0 +1,84 @@
+﻿@model IEnumerable<DigiLearn.Models.ActividadReconocimientoAnimales>
+
+@{
+    ViewData["Title"] = "Actividad";
+}
+
+<h3>Actividad: Reconocimiento de Animales</h3>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+
+<div id="carouselReconocimientoAnimales" class="carousel carousel-dark slide mt-5" data-bs-touch="false" data-bs-interval="false">
+    <div class="carousel-inner mt-md-5">
+        <div class="carousel-item active">
+            <img src="./img/animales/caballo.png" class="d-block m-auto anim" alt="Dibujo Caballo">
+            <div class="d-block mt-4 mt-md-5 text-center">
+                <h1 class="kids-font">C A B A L L O</h1>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./img/animales/cebra.png" class="d-block m-auto anim" alt="Dibujo Cebra">
+            <div class="d-block mt-4 mt-md-5 text-center">
+                <h1 class="kids-font">C E B R A</h1>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./img/animales/elefante.png" class="d-block m-auto anim" alt="Dibujo Elefante">
+            <div class="d-block mt-4 mt-md-5 text-center">
+                <h1 class="kids-font">E L E F A N T E</h1>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./img/animales/gato.png" class="d-block m-auto anim" alt="Dibujo Gato">
+            <div class="d-block mt-4 mt-md-5 text-center">
+                <h1 class="kids-font">G A T O</h1>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./img/animales/jirafa.png" class="d-block m-auto h-25 anim" alt="Dibujo Jirafa">
+            <div class="d-block mt-4 mt-md-5 text-center">
+                <h1 class="kids-font">J I R A F A</h1>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./img/animales/oso.png" class="d-block m-auto anim" alt="Dibujo Oso">
+            <div class="d-block mt-4 mt-md-5 text-center">
+                <h1 class="kids-font">O S O</h1>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./img/animales/perro.png" class="d-block m-auto anim" alt="Dibujo Perro">
+            <div class="d-block mt-4 mt-md-5 text-center">
+                <h1 class="kids-font">P E R R O</h1>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./img/animales/pollito.png" class="d-block m-auto anim" alt="Dibujo Pollito">
+            <div class="d-block mt-4 mt-md-5 text-center">
+                <h1 class="kids-font">P O L L I T O</h1>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./img/animales/raton.png" class="d-block m-auto anim" alt="Dibujo Ratón">
+            <div class="d-block mt-4 mt-md-5 text-center">
+                <h1 class="kids-font">R A T Ó N</h1>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./img/animales/tortuga.png" class="d-block m-auto anim" alt="Dibujo Tortuga">
+            <div class="d-block mt-4 mt-md-5 text-center">
+                <h1 class="kids-font">T O R T U G A</h1>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselReconocimientoAnimales" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselReconocimientoAnimales" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>

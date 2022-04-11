@@ -1,0 +1,58 @@
+﻿/*
+    * Mini Framework v1.1.0
+    * Copyleft 2022 Javier García
+    * GPL
+*/
+
+/*.anim-xsm,
+.anim-sm,
+.anim-md,
+.anim-lg,
+.anim-xl,
+.anim-xxl {
+    height: 30vh;
+    width: auto;
+}*/
+
+@media (max-width: 991px) {
+    .anim {
+        max-height: 30vh;
+    }
+}
+
+/*@media (min-width: 576px) {
+    .anim {
+        max-height: 175px !important;
+    }
+}*/
+
+/*@media (min-width: 768px) {
+    .anim {
+        max-height: 175px !important;
+    }
+}*/
+
+@media (min-width: 992px) {
+    .anim {
+        max-height: 275px !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .anim {
+        max-height: 350px !important;
+    }
+}
+
+@media (min-width: 1400px) {
+    .anim {
+        max-height: 475px !important;
+        /*175px 350px 475px 600px 775px*/
+    }
+}
+
+.kids-font {
+    font-family: 'Comic Sans MS' !important;
+    font-weight: 600 !important;
+    color: indigo !important;
+}

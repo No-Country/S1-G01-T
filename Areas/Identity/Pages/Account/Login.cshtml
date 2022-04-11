@@ -2,7 +2,7 @@
 @model LoginModel
 
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = "Iniciar sesión";
 }
 
 
@@ -78,7 +78,6 @@
                                     <label asp-for="Input.RememberMe">
                                         <input asp-for="Input.RememberMe" />
                                         @Html.DisplayNameFor(m => m.Input.RememberMe)
-                                        @*Recordarme - NO PUEDO COLOCARLO EN ESPAÑOL*@
                                     </label>
                                 </div>
                             </div>
@@ -117,7 +116,7 @@
                             <p>
                                 @foreach (var provider in Model.ExternalLogins)
                                 {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Iniciar sesión utilizando su cuenta @provider.DisplayName">@provider.DisplayName</button>
                                 }
                             </p>
                         </div>
