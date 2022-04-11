@@ -1,0 +1,78 @@
+﻿@model IEnumerable<DigiLearn.Models.Memory>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+
+    .grid {
+        display: block;
+        flex-wrap: wrap;
+        width: 80%;
+        height: 80%;
+        justify-content: space-between;
+        margin: auto;
+          }
+
+    img {
+        height: 23%;
+        width: 23%;
+    }
+</style>
+
+<h1>Actividad Memory Game</h1>
+
+<div class="col-8">
+    <div class="col-4" style="float:left;width: 30%;outline: green solid thin; border-radius:3px 3px"><h3>Score: <span id="result"></span></h3></div>
+    <div class="col-2" style="float: right;">
+        <button class="btn btn-outline-success" onclick="location.reload()">Reiniciar</button>
+     </div>
+</div>
+<br />
+<br />
+<br />
+
+<div class="card col-8 border-primary">
+    <div class="grid pr-0"></div>
+</div>
+
+<script src="~/js/app.js"></script>
+
+
+@*<table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaRealizacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProfesionalId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PacienteId)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaRealizacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProfesionalId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PacienteId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ActividadId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ActividadId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ActividadId">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@

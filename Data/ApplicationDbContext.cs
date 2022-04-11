@@ -16,6 +16,7 @@ namespace DigiLearn.Data
 
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<Respuestas> Respuestas { get; set; }
+        public DbSet<DigiLearn.Models.Memory> Memory { get; set; }
         public DbSet<DigiLearn.Models.ActividadReconocimientoAnimales> ActividadReconocimientoAnimales { get; set; }
         //public DbSet<Preguntas> Preguntas { get; set; }
         //public DbSet<>  { get; set; }
