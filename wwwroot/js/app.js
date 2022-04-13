@@ -80,19 +80,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if(optionOneId == optionTwoId) {
             cards[optionOneId].setAttribute('src', 'img/favicon.png')
             cards[optionTwoId].setAttribute('src', 'img/favicon.png')
-            /*  alert('Son iguales !')*/
+            /*alert('¡ Son iguales !')*/
         }else if(cardsChosen [0] === cardsChosen[1]) {
-                /*alert('Encontraste la carta Compañera !')*/
-                cards[optionOneId].setAttribute('src','img/animales/blank.png')
-                cards[optionTwoId].setAttribute('src', 'img/animales/blank.png')
-                cards[optionOneId].removeEventListener('click', flipCard)
-                cards[optionTwoId].removeEventListener('click', flipCard)
-                cardsWon.push(cardsChosen)
-
+            alert('¡ Encontraste la carta Compañera !')
+            cards[optionOneId].setAttribute('src','img/animales/blank.png')
+            cards[optionTwoId].setAttribute('src', 'img/animales/blank.png')
+            cards[optionOneId].removeEventListener('click', flipCard)
+            cards[optionTwoId].removeEventListener('click', flipCard)
+            cardsWon.push(cardsChosen)
         }else{
             cards[optionOneId].setAttribute('src', 'img/favicon.png')
             cards[optionTwoId].setAttribute('src','img/favicon.png')
-            /*  alert('No son iguales. ¡Intenta de Nuevo!')*/
+            alert('No son iguales. ¡Intenta de Nuevo!')
         }
         cardsChosen = []
         cardsChosenId = []
@@ -100,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(cardsWon.length === cardArray.length/2) {
             resultDisplay.textContent ='¡¡¡ Ganaste !!!'
         }
+        /*$('.memory-img').attr('disabled', 'enabled')*/
     }
 
     //flip your card
@@ -108,8 +108,9 @@ document.addEventListener('DOMContentLoaded', () => {
         cardsChosen.push(cardArray[cardId].name)
         cardsChosenId.push(cardId)
         this.setAttribute('src', cardArray[cardId].img)
-        if(cardsChosen.length === 2) {
-            setTimeout(checkForMatch, 1000)
+        if (cardsChosen.length === 2) {
+            /*$('.memory-img').attr('disabled', 'disabled')*/
+            setTimeout(checkForMatch, 250)
         }
     }
 

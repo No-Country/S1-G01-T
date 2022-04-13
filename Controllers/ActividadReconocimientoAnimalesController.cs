@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using DigiLearn.Data;
 using DigiLearn.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace DigiLearn.Controllers
 {
@@ -15,10 +16,12 @@ namespace DigiLearn.Controllers
     public class ActividadReconocimientoAnimalesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public ActividadReconocimientoAnimalesController(ApplicationDbContext context)
+        public ActividadReconocimientoAnimalesController(ApplicationDbContext context, UserManager<IdentityUser> UserManager)
         {
             _context = context;
+            _userManager = UserManager;
         }
 
         // GET: ActividadReconocimientoAnimales
@@ -31,15 +34,36 @@ namespace DigiLearn.Controllers
         // POST: ActividadReconocimientoAnimales/Save
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Save([Bind("ActividadId,FechaRealizado,PacienteId,ProfesionalId")] ActividadReconocimientoAnimales actividadReconocimientoAnimales)
+        public async Task<IActionResult> Save(int actividadId, DateTime fechaRealizacion, int pacienteId)
         {
+            ActividadReconocimientoAnimales actividadReconocimientoAnimales = new()
+            {
+                ActividadId = actividadId,
+                // ¿Nivel de dificultad de la actividad?
+                FechaRealizacion = fechaRealizacion,
+                PacienteId = pacienteId
+            };
+
             if (ModelState.IsValid)
             {
-                _context.Add(actividadReconocimientoAnimales);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try {
+                    var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+                    actividadReconocimientoAnimales.ProfesionalId = Int32.Parse(currentUser.Id);
+                    if (currentUser == null)
+                    {
+                        return BadRequest();
+                    }
+                    _context.Add(actividadReconocimientoAnimales);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                    catch (Exception e)
+                {
+                return BadRequest(e);
             }
-            return View(actividadReconocimientoAnimales);    // ACÁ HAY QUE REDIRECCIONAR A LA VISTA DONDE SE SELECCIONAN LAS ACTIVIDADES y SIN el parámetro.
+        }
+            // Acá debería abrir un modal de Error("Hubo un problema al intentar cargar la actividad") y que al Aceptar/cerrar quede en la vista Detalle de Paciente (o en la vista para seleccionar las actividades).
+            return View(actividadReconocimientoAnimales);    // ACÁ HAY QUE REDIRECCIONAR A LA VISTA Listado Pacientes o en la que SE SELECCIONAN LAS ACTIVIDADES y SIN el parámetro.
         }
 
         // GET: ActividadReconocimientoAnimales/Details/5

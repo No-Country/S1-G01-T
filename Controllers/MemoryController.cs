@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using DigiLearn.Data;
 using DigiLearn.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace DigiLearn.Controllers
 {
@@ -16,10 +17,12 @@ namespace DigiLearn.Controllers
     {
 
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public MemoryController(ApplicationDbContext context)
+        public MemoryController(ApplicationDbContext context, UserManager<IdentityUser> UserManager)
         {
             _context = context;
+            _userManager = UserManager;
         }
 
         // GET: Memory

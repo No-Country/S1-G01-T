@@ -32,12 +32,12 @@ namespace DigiLearn.Controllers
         [Route("Paciente/Index/")]
         public async Task<ActionResult> Index()
         {
-            List<PacienteView> LisPacientes = new List<PacienteView>();
+            List<PacienteView> LisPacientes = new();
             var currentUser = await _userManager.GetUserAsync(HttpContext.User);
             var LP = _context.Pacientes.Where(z => z.ProfesionalId.Equals(currentUser.Id) && z.Estado.Equals(true));
             foreach (var item in LP)
             {
-                PacienteView PacV = new PacienteView();
+                PacienteView PacV = new();
                 PacV.PacienteId = item.PacienteId;
                 PacV.Nombre = item.Nombre;
                 PacV.Apellido = item.Apellido;
@@ -63,7 +63,7 @@ namespace DigiLearn.Controllers
 
             if (paci != null)
             {
-                PacienteView pacView = new PacienteView();
+                PacienteView pacView = new();
                 pacView.PacienteId = paci.PacienteId;
                 pacView.Nombre = paci.Nombre;
                 pacView.Apellido = paci.Apellido;
@@ -87,39 +87,37 @@ namespace DigiLearn.Controllers
         // POST: PacienteController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CrearPaciente(PacienteView model)
+        public async Task<ActionResult> CrearPaciente(Paciente model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (!ModelState.IsValid)
+                try
                 {
-                    return BadRequest();
-                }
+                    var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+                    if (currentUser == null)
+                    {
+                        return BadRequest();
+                    }
+                    Paciente Pac = new();
+                    Pac.PacienteId = model.PacienteId;
+                    Pac.Nombre = model.Nombre;
+                    Pac.Apellido = model.Apellido;
+                    Pac.Edad = model.Edad;
+                    Pac.Diagnostico = model.Diagnostico;
+                    Pac.FechaCreacion = model.FechaCreacion;
+                    Pac.Estado = model.Estado;
+                    Pac.ProfesionalId = currentUser.Id;
 
-                var currentUser = await _userManager.GetUserAsync(HttpContext.User);
-                if (currentUser == null)
+                    await _context.Pacientes.AddAsync(Pac);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception e)
                 {
-                    return BadRequest();
+                    return BadRequest(e);
                 }
-
-                Paciente Pac = new Paciente();
-                Pac.PacienteId = model.PacienteId;
-                Pac.Nombre = model.Nombre;
-                Pac.Apellido = model.Apellido;
-                Pac.Edad = model.Edad;
-                Pac.Diagnostico = model.Diagnostico;
-                Pac.FechaCreacion = model.FechaCreacion;
-                Pac.Estado = model.Estado;
-                Pac.ProfesionalId = currentUser.Id;
-
-                await _context.Pacientes.AddAsync(Pac);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View("Create", model);
         }
 
         // GET: PacienteController/Edit/5
@@ -130,7 +128,7 @@ namespace DigiLearn.Controllers
 
             if (paci != null)
             {
-                PacienteView pacView = new PacienteView();
+                PacienteView pacView = new();
                 pacView.Nombre = paci.Nombre;
                 pacView.Apellido = paci.Apellido;
                 pacView.Edad = paci.Edad;
