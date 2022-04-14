@@ -1,0 +1,43 @@
+﻿@model DigiLearn.Models.Sumas
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Sumas</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FechaRealizacion" class="control-label"></label>
+                <input asp-for="FechaRealizacion" class="form-control" />
+                <span asp-validation-for="FechaRealizacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProfesionalId" class="control-label"></label>
+                <input asp-for="ProfesionalId" class="form-control" />
+                <span asp-validation-for="ProfesionalId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PacienteId" class="control-label"></label>
+                <input asp-for="PacienteId" class="form-control" />
+                <span asp-validation-for="PacienteId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

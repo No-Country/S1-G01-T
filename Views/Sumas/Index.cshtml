@@ -1,0 +1,126 @@
+﻿@model IEnumerable<DigiLearn.Models.Sumas>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    *{
+        margin: 0;
+        padding:0;
+        box-sizing: border-box;
+    }
+    .container-operacion {
+        font-size: 60px;
+    }
+    .bodyS{
+          color:#000000;
+    }
+    .containerS {
+        background-image: url('img/favicon.png');
+        background-size: 30% 30%; /*Con esto ocupas el 100% del contenedor*/
+        background-repeat: no-repeat; /*Evitas que la imagen se repita si el contenedor es mas grande*/
+        max-width: 500px;
+        margin: auto;
+        border: 1px solid #000;
+        border-radius: 20px;
+        display: flex;
+        padding: 50px 0;
+        text-align: center;
+    }
+    .izquierdo{
+        width:70%;
+        font-size:50px;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+    }
+    .derecha{
+        width:20%;
+    }
+    .msj{
+        font-size:30px;
+        height:35px;
+    }
+    .opcion{
+        width:60px;
+        height:60px;
+        border: 1px solid #000;
+        font-size:30px;
+        margin-bottom: 20px;
+        border-radius:50%;
+        cursor:pointer;
+        background-color: #000;
+        color:white;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+    .opcion:hover{
+        background-color: #248520;
+    }
+
+</style>
+<h3>Actividad de Sumas</h3>
+
+<body class="bodyS">
+       <div class="containerS">
+           <div class="izquierdo">
+               <div class="container-operacion">
+                   <span id="suma">9+9=</span>
+                   <span class="resultado" id="resultado">18</span>
+               </div>
+               <span id="msj" class="msj">¡¡¡ EXCELENTE !!!</span>
+           </div>
+            <div class="derecha">
+                    <span id="op1" class="opcion" onclick="controlarRta(this)"></span>
+                    <span id="op2" class="opcion" onclick="controlarRta(this)"></span>
+                    <span id="op3" class="opcion" onclick="controlarRta(this)"></span>
+            </div>
+    </div>
+</body>
+<div>
+    <br />
+    <a asp-controller="Paciente" asp-action="Index" style="font-size: 1.2em; color: orangered"><i class="far fa-arrow-alt-circle-left"></i>Regresar</a>
+</div>
+
+<script src="~/js/suma.js"></script>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaRealizacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProfesionalId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PacienteId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaRealizacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProfesionalId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PacienteId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ActividadId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ActividadId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ActividadId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>*@
