@@ -16,9 +16,9 @@
           color:#000000;
     }
     .containerS {
-        background-image: url('img/favicon.png');
+        background-image: url('/img/favicon.png');
         background-size: 30% 30%;
-        background-repeat: no-repeat; 
+        background-repeat: no-repeat;
         max-width: 500px;
         margin: auto;
         border: 1px solid #000;
@@ -80,7 +80,7 @@
 </body>
 <div>
     <br />
-    <a asp-controller="Paciente" asp-action="Index" style="font-size: 1.2em; color: orangered"><i class="far fa-arrow-alt-circle-left"></i>Regresar</a>
+    <a asp-controller="Paciente" asp-action="Details" asp-route-id="@ViewData["PacienteId"]" style="font-size: 1.2em; color: orangered"><i class="far fa-arrow-alt-circle-left"></i>Regresar</a>
 </div>
 
 <script src="~/js/suma.js"></script>

@@ -26,8 +26,9 @@ namespace DigiLearn.Controllers
         }
 
         // GET: Memory
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
+            ViewData["PacienteId"] = id;
             return View(await _context.Memory.ToListAsync());
         }
 

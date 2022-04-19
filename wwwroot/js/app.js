@@ -3,51 +3,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const cardArray = [
         {
             name: 'elefante',
-            img: 'img/animales/elefante.png',
+            img: '/img/animales/elefante.png',
         },
         {
             name: 'elefante',
-            img: 'img/animales/elefante.png'
+            img: '/img/animales/elefante.png'
         },
         {
             name: 'gato',
-            img: 'img/animales/gato.png'
+            img: '/img/animales/gato.png'
         },
         {
             name: 'gato',
-            img: 'img/animales/gato.png'
+            img: '/img/animales/gato.png'
         },
         {
             name:'caballo',
-            img:'img/animales/caballo.png'
+            img:'/img/animales/caballo.png'
         },
         {
             name: 'caballo',
-            img: 'img/animales/caballo.png'
+            img: '/img/animales/caballo.png'
         },
         {
             name: 'cebra',
-            img: 'img/animales/cebra.png'
+            img: '/img/animales/cebra.png'
         },
         {
             name: 'cebra',
-            img: 'img/animales/cebra.png'
+            img: '/img/animales/cebra.png'
         },
         {
             name: 'raton',
-            img: 'img/animales/raton.png'
+            img: '/img/animales/raton.png'
         },
         {
             name: 'raton',
-            img: 'img/animales/raton.png'
+            img: '/img/animales/raton.png'
         },
         {
             name: 'tortuga',
-            img: 'img/animales/tortuga.png'
+            img: '/img/animales/tortuga.png'
         },
         {
             name: 'tortuga',
-            img: 'img/animales/tortuga.png'
+            img: '/img/animales/tortuga.png'
         }
     ]
 
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for(let i = 0; i < cardArray.length; i++) {
             var card = document.createElement('img')
             card.setAttribute('class', 'memory-img')
-            card.setAttribute('src', 'img/favicon.png')
+            card.setAttribute('src', '/img/favicon.png')
             card.setAttribute('data-id', i)
             card.addEventListener('click', flipCard)
             grid.appendChild(card)
@@ -78,19 +78,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const optionTwoId = cardsChosenId[1]
 
         if(optionOneId == optionTwoId) {
-            cards[optionOneId].setAttribute('src', 'img/favicon.png')
-            cards[optionTwoId].setAttribute('src', 'img/favicon.png')
+            cards[optionOneId].setAttribute('src', '/img/favicon.png')
+            cards[optionTwoId].setAttribute('src', '/img/favicon.png')
             /*alert('¡ Son iguales !')*/
         }else if(cardsChosen [0] === cardsChosen[1]) {
             alert('¡ Encontraste la carta Compañera !')
-            cards[optionOneId].setAttribute('src','img/animales/blank.png')
-            cards[optionTwoId].setAttribute('src', 'img/animales/blank.png')
+            cards[optionOneId].setAttribute('src','/img/animales/blank.png')
+            cards[optionTwoId].setAttribute('src', '/img/animales/blank.png')
             cards[optionOneId].removeEventListener('click', flipCard)
             cards[optionTwoId].removeEventListener('click', flipCard)
             cardsWon.push(cardsChosen)
         }else{
-            cards[optionOneId].setAttribute('src', 'img/favicon.png')
-            cards[optionTwoId].setAttribute('src','img/favicon.png')
+            cards[optionOneId].setAttribute('src', '/img/favicon.png')
+            cards[optionTwoId].setAttribute('src','/img/favicon.png')
             alert('No son iguales. ¡Intenta de Nuevo!')
         }
         cardsChosen = []

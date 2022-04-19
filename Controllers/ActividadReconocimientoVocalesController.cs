@@ -19,8 +19,9 @@ namespace DigiLearn.Controllers
         }
 
         // GET: ActividadReconocimientoAnimales
-        public IActionResult Index()
+        public IActionResult Index(int? id)
         {
+            ViewData["PacienteId"] = id;
             return View();
         }
 

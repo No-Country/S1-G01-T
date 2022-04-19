@@ -22,8 +22,9 @@ namespace DigiLearn.Controllers
         }
 
         // GET: Sumas
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
+            ViewData["PacienteId"] = id;
             return View(await _context.Sumas.ToListAsync());
         }
 

@@ -13,27 +13,27 @@
 <div id="carouselReconocimientoAnimales" class="carousel carousel-dark slide mt-5" data-bs-touch="false" data-bs-interval="false">
     <div class="carousel-inner mt-md-5">
         <div class="carousel-item active">
-            <img src="./img/vocales/letraA.jpg" class="d-block m-auto anim" alt="Letra A">
+            <img src="~/img/vocales/letraA.jpg" class="d-block m-auto anim" alt="Letra A">
             <div class="d-block mt-4 mt-md-5 text-center">
             </div>
         </div>
         <div class="carousel-item">
-            <img src="./img/vocales/letraE.jpg" class="d-block m-auto anim" alt="Letra E">
+            <img src="~/img/vocales/letraE.jpg" class="d-block m-auto anim" alt="Letra E">
             <div class="d-block mt-4 mt-md-5 text-center">
             </div>
         </div>
         <div class="carousel-item">
-            <img src="./img/vocales/letraI.jpg" class="d-block m-auto anim" alt="Letra I">
+            <img src="~/img/vocales/letraI.jpg" class="d-block m-auto anim" alt="Letra I">
             <div class="d-block mt-4 mt-md-5 text-center">
             </div>
         </div>
         <div class="carousel-item">
-            <img src="./img/vocales/letraO.jpg" class="d-block m-auto anim" alt="Letra O">
+            <img src="~/img/vocales/letraO.jpg" class="d-block m-auto anim" alt="Letra O">
             <div class="d-block mt-4 mt-md-5 text-center">
             </div>
         </div>
         <div class="carousel-item">
-            <img src="./img/vocales/letraU.jpg" class="d-block m-auto anim" alt="Letra U">
+            <img src="~/img/vocales/letraU.jpg" class="d-block m-auto anim" alt="Letra U">
             <div class="d-block mt-4 mt-md-5 text-center">
             </div>
         </div>
@@ -49,5 +49,5 @@
 </div>
 <div>
     <br />
-    <a asp-controller="Paciente" asp-action="Index" style="font-size: 1.2em; color: orangered"><i class="far fa-arrow-alt-circle-left"></i>Regresar</a>
+    <a asp-controller="Paciente" asp-action="Details" asp-route-id="@ViewData["PacienteId"]" style="font-size: 1.2em; color: orangered"><i class="far fa-arrow-alt-circle-left"></i>Regresar</a>
 </div>

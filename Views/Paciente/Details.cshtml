@@ -65,12 +65,12 @@
                     </button>
                     <ul class="dropdown-menu">
                         <li><h6 class="dropdown-header">Inicial</h6></li>
-                        <li><a class="dropdown-item" asp-controller="ActividadReconocimientoAnimales" asp-action="Index">Reconocimiento Animales</a></li>
-                        <li><a class="dropdown-item" asp-controller="ActividadReconocimientoVocales" asp-action="Index">Reconocimiento Vocales</a></li>
-                        <li><a class="dropdown-item" asp-controller="Memory" asp-action="Index">Juego de Memoria</a></li>
+                        <li><a class="dropdown-item" asp-controller="ActividadReconocimientoAnimales" asp-action="Index" asp-route-id="@Model.PacienteId">Reconocimiento Animales</a></li>
+                        <li><a class="dropdown-item" asp-controller="ActividadReconocimientoVocales" asp-action="Index" asp-route-id="@Model.PacienteId">Reconocimiento Vocales</a></li>
+                        <li><a class="dropdown-item" asp-controller="Memory" asp-action="Index" asp-route-id="@Model.PacienteId">Juego de Memoria</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><h6 class="dropdown-header">Primario</h6></li>
-                        <li><a class="dropdown-item" asp-controller="Sumas" asp-action="Index">Sumas</a></li>
+                        <li><a class="dropdown-item" asp-controller="Sumas" asp-action="Index" asp-route-id="@Model.PacienteId">Sumas</a></li>
                     </ul>
                 </div>
             </div>
