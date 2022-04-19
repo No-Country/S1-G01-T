@@ -1,10 +1,14 @@
-﻿using DigiLearn.Data;
-using DigiLearn.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using DigiLearn.Data;
+using DigiLearn.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace DigiLearn.Controllers
 {
@@ -12,10 +16,12 @@ namespace DigiLearn.Controllers
     public class ActividadReconocimientoVocalesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public ActividadReconocimientoVocalesController(ApplicationDbContext context)
+        public ActividadReconocimientoVocalesController(ApplicationDbContext context, UserManager<IdentityUser> UserManager)
         {
             _context = context;
+            _userManager = UserManager;
         }
 
         // GET: ActividadReconocimientoAnimales
@@ -29,13 +35,34 @@ namespace DigiLearn.Controllers
         // POST: ActividadReconocimientoAnimales/Save
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Save([Bind("ActividadId,FechaRealizado,PacienteId,ProfesionalId")] ActividadReconocimientoVocales actividadReconocimientoVocales)
+        public async Task<IActionResult> Save(DateTime fechaRealizacion, int pacienteId)
         {
+            ActividadReconocimientoVocales actividadReconocimientoVocales = new()
+            {
+                //ActividadId = actividadId,
+                // ¿Nivel de dificultad de la actividad?
+                FechaRealizacion = fechaRealizacion,
+                PacienteId = pacienteId
+            };
+
             if (ModelState.IsValid)
             {
-                _context.Add(actividadReconocimientoVocales);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+                    actividadReconocimientoVocales.ProfesionalId = currentUser.Id;
+                    if (currentUser == null)
+                    {
+                        return BadRequest();
+                    }
+                    _context.Add(actividadReconocimientoVocales);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Index", new { id = pacienteId });
+                }
+                catch (Exception e)
+                {
+                    return BadRequest(e);
+                }   
             }
             return View(actividadReconocimientoVocales);    // ACÁ HAY QUE REDIRECCIONAR A LA VISTA DONDE SE SELECCIONAN LAS ACTIVIDADES y SIN el parámetro.
         }

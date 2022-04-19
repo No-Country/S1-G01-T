@@ -57,24 +57,32 @@
         <h5 class="card-title">Actividades Realizadas</h5>
         @*aqui deberiamos agregar las metricas obtenidas por cada actividad realizada y su fecha
         mas el campo de agregar observacion*@
+    <form method="post">
         <div class="row">
             <div class="col">
                 <div class="btn-group" style="float: right;">
                     <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         Asignar Actividad
                     </button>
+
+                    @*<input type="number" name="actividadId" value="1" hidden />*@
+                    <input type="datetime" name="fechaRealizacion" value="@DateTime.Now" hidden />
+                    <input type="number" name="pacienteId" value="@Model.PacienteId" hidden />
+
                     <ul class="dropdown-menu">
                         <li><h6 class="dropdown-header">Inicial</h6></li>
-                        <li><a class="dropdown-item" asp-controller="ActividadReconocimientoAnimales" asp-action="Index" asp-route-id="@Model.PacienteId">Reconocimiento Animales</a></li>
-                        <li><a class="dropdown-item" asp-controller="ActividadReconocimientoVocales" asp-action="Index" asp-route-id="@Model.PacienteId">Reconocimiento Vocales</a></li>
-                        <li><a class="dropdown-item" asp-controller="Memory" asp-action="Index" asp-route-id="@Model.PacienteId">Juego de Memoria</a></li>
+                        <li><input type="submit" class="dropdown-item" asp-controller="ActividadReconocimientoAnimales" asp-action="Save" value="Reconocimiento Animales" /></li>
+                        <li><input type="submit" class="dropdown-item" asp-controller="ActividadReconocimientoVocales" asp-action="Save" value="Reconocimiento Vocales" /></li>
+                        <li><input type="submit" class="dropdown-item" asp-controller="Memory" asp-action="Save" value="Juego de Memoria" /></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><h6 class="dropdown-header">Primario</h6></li>
-                        <li><a class="dropdown-item" asp-controller="Sumas" asp-action="Index" asp-route-id="@Model.PacienteId">Sumas</a></li>
+                        <li><input type="submit" class="dropdown-item" asp-controller="Sumas" asp-action="Save" value="Sumas" /></li>
                     </ul>
+
                 </div>
             </div>
         </div>
+    </form>
        
 
         <div class="row">

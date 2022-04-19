@@ -19,7 +19,7 @@ namespace DigiLearn.Models
         public DateTime FechaRealizacion { get; set; }
         
         [Required]
-        public int ProfesionalId { get; set; }
+        public string ProfesionalId { get; set; }
         
         [Required]
         public int PacienteId { get; set; }

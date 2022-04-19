@@ -35,11 +35,11 @@ namespace DigiLearn.Controllers
         // POST: ActividadReconocimientoAnimales/Save
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Save(int actividadId, DateTime fechaRealizacion, int pacienteId)
+        public async Task<IActionResult> Save(DateTime fechaRealizacion, int pacienteId)              //int actividadId
         {
             ActividadReconocimientoAnimales actividadReconocimientoAnimales = new()
             {
-                ActividadId = actividadId,
+                //ActividadId = actividadId,
                 // ¿Nivel de dificultad de la actividad?
                 FechaRealizacion = fechaRealizacion,
                 PacienteId = pacienteId
@@ -49,20 +49,20 @@ namespace DigiLearn.Controllers
             {
                 try {
                     var currentUser = await _userManager.GetUserAsync(HttpContext.User);
-                    actividadReconocimientoAnimales.ProfesionalId = Int32.Parse(currentUser.Id);
+                    actividadReconocimientoAnimales.ProfesionalId = currentUser.Id;
                     if (currentUser == null)
                     {
                         return BadRequest();
                     }
                     _context.Add(actividadReconocimientoAnimales);
                     await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction("Index", new { id = pacienteId });
                 }
-                    catch (Exception e)
+                catch (Exception e)
                 {
                 return BadRequest(e);
+                }
             }
-        }
             // Acá debería abrir un modal de Error("Hubo un problema al intentar cargar la actividad") y que al Aceptar/cerrar quede en la vista Detalle de Paciente (o en la vista para seleccionar las actividades).
             return View(actividadReconocimientoAnimales);    // ACÁ HAY QUE REDIRECCIONAR A LA VISTA Listado Pacientes o en la que SE SELECCIONAN LAS ACTIVIDADES y SIN el parámetro.
         }

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using DigiLearn.Data;
 using DigiLearn.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace DigiLearn.Controllers
 {
@@ -15,10 +16,12 @@ namespace DigiLearn.Controllers
     public class SumasController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public SumasController(ApplicationDbContext context)
+        public SumasController(ApplicationDbContext context, UserManager<IdentityUser> UserManager)
         {
             _context = context;
+            _userManager = UserManager;
         }
 
         // GET: Sumas
@@ -32,13 +35,34 @@ namespace DigiLearn.Controllers
         //POST: Sumas/Save
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Save([Bind("ActividadId,FechaRealizacion,ProfesionalId,PacienteId")] Sumas sumas)
+        public async Task<IActionResult> Save(DateTime fechaRealizacion, int pacienteId)
         {
+            Sumas sumas = new()
+            {
+                //ActividadId = actividadId,
+                // ¿Nivel de dificultad de la actividad?
+                FechaRealizacion = fechaRealizacion,
+                PacienteId = pacienteId
+            };
+
             if (ModelState.IsValid)
             {
-                _context.Add(sumas);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+                    sumas.ProfesionalId = currentUser.Id;
+                    if (currentUser == null)
+                    {
+                        return BadRequest();
+                    }
+                    _context.Add(sumas);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Index", new { id = pacienteId });
+                }
+                catch (Exception e)
+                {
+                    return BadRequest(e);
+                }
             }
             return View(sumas);
         }

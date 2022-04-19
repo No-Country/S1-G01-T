@@ -35,13 +35,34 @@ namespace DigiLearn.Controllers
         //POST: Memory/Save
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Save([Bind("ActividadId,FechaRealizacion,ProfesionalId,PacienteId")] Memory memory)
+        public async Task<IActionResult> Save(DateTime fechaRealizacion, int pacienteId)
         {
+            Memory memory = new()
+            {
+                //ActividadId = actividadId,
+                // ¿Nivel de dificultad de la actividad?
+                FechaRealizacion = fechaRealizacion,
+                PacienteId = pacienteId
+            };
+
             if (ModelState.IsValid)
             {
-                _context.Add(memory);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+                    memory.ProfesionalId = currentUser.Id;
+                    if (currentUser == null)
+                    {
+                        return BadRequest();
+                    }
+                    _context.Add(memory);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Index", new { id = pacienteId });
+                }
+                catch (Exception e)
+                {
+                    return BadRequest(e);
+                }
             }
             return View(memory);  
             /*Aca redireccionar a la vista donde asigna tareas sin PARAMETRO
