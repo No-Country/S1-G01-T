@@ -25,9 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\img\insectos\" />
-    <Folder Include="wwwroot\img\comidas\" />
-    <Folder Include="wwwroot\img\profesiones\" />
+    <Folder Include="wwwroot\img\comida\" />
+    <Folder Include="wwwroot\img\profesion\" />
   </ItemGroup>
 
 </Project>
