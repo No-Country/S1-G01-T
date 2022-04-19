@@ -56,7 +56,27 @@
     <div class="card-body text-primary">
         <h5 class="card-title">Actividades Realizadas</h5>
         @*aqui deberiamos agregar las metricas obtenidas por cada actividad realizada y su fecha
-            mas el campo de agregar observacion*@
+        mas el campo de agregar observacion*@
+        <div class="row">
+            <div class="col">
+                <div class="btn-group" style="float: right;">
+                    <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Asignar Actividad
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><h6 class="dropdown-header">Inicial</h6></li>
+                        <li><a class="dropdown-item" asp-controller="ActividadReconocimientoAnimales" asp-action="Index">Reconocimiento Animales</a></li>
+                        <li><a class="dropdown-item" asp-controller="ActividadReconocimientoVocales" asp-action="Index">Reconocimiento Vocales</a></li>
+                        <li><a class="dropdown-item" asp-controller="Memory" asp-action="Index">Juego de Memoria</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><h6 class="dropdown-header">Primario</h6></li>
+                        <li><a class="dropdown-item" asp-controller="Sumas" asp-action="Index">Sumas</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+       
+
         <div class="row">
             <div class="col-6">
                 <label asp-for="FechaCreacion" class="control-label">Fecha Realización</label>
@@ -68,7 +88,7 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
 <div>
-    <a asp-action="Index" style="font-size: 1.2em; color: orangered"><i class="far fa-arrow-alt-circle-left"></i>Ir al Listado</a>
+    <a asp-action="Index" style="font-size: 1.2em; color: orangered"><i class="far fa-arrow-alt-circle-left"></i>Listado de Pacientes</a>
 </div>

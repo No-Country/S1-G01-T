@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -18,6 +19,5 @@ namespace DigiLearn.Models
         public int ProfesionalId { get; set; }
         [Required]
         public int PacienteId { get; set; }
-
-    }
+        }
 }
