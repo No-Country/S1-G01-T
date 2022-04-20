@@ -22,6 +22,9 @@ namespace DigiLearn.Data
         public DbSet<DigiLearn.Models.ActividadReconocimientoVocales> ActividadReconocimientoVocales { get; set; }
 
         public DbSet<DigiLearn.Models.Sumas> Sumas { get; set; }
+
+        public DbSet<DigiLearn.Models.Frases> Frases { get; set; }
+
         //public DbSet<Preguntas> Preguntas { get; set; }
         //public DbSet<>  { get; set; }
 
