@@ -1,27 +1,27 @@
-﻿var q = ["En verano hace calor y en invierno _______<br /><br />", "What is 2 + 2?<br /><br />", "What is 3 + 3?<br /><br />", "What is 4 + 4?<br /><br />", "What is 5 + 5?<br /><br />"];
+﻿var q = ["En verano hace calor y en invierno _______<br /><br />", "De día sale el ______<br /><br />", "Un año tiene doce ______<br /><br />", "Los colores primarios son azul, rojo y ________<br /><br />", "Las operaciones matemáticas son suma, resta, multiplicación y __________<br /><br />"];
 var a1 = ["<button class=buttons002 onclick=q1c()>frío</button>",
-    "<button class=buttons002 onclick=q2c()>4</button>",
-    "<button class=buttons002 onclick=q3c()>6</button>",
-    "<button class=buttons002 onclick=q4i()>13</button>",
-    "<button class=buttons002 onclick=q5i()>6</button>"];
+    "<button class=buttons002 onclick=q2i()>arcoiris</button>",
+    "<button class=buttons002 onclick=q3c()>meses</button>",
+    "<button class=buttons002 onclick=q4i()>verde</button>",
+    "<button class=buttons002 onclick=q5i()>erosión</button>"];
 
 var a2 = ["<button class=buttons002 onclick=q1i()>viento</button>",
-    "<button class=buttons002 onclick=q2i()>7</button>",
-    "<button class=buttons002 onclick=q3i()>2</button>",
-    "<button class=buttons002 onclick=q4c()>8</button>",
-    "<button class=buttons002 onclick=q5c()>10</button>"];
+    "<button class=buttons002 onclick=q2c()>sol</button>",
+    "<button class=buttons002 onclick=q3i()>días</button>",
+    "<button class=buttons002 onclick=q4i()>violeta</button>",
+    "<button class=buttons002 onclick=q5i()>ecuación</button>"];
 
 var a3 = ["<button class=buttons002 onclick=q1i()>nieve</button>",
-    "<button class=buttons002 onclick=q2i()>6</button>",
-    "<button class=buttons002 onclick=q3i()>9</button>",
-    "<button class=buttons002 onclick=q4i()>9</button>",
-    "<button class=buttons002 onclick=q5i()>7</button>"];
+    "<button class=buttons002 onclick=q2i()>cielo</button>",
+    "<button class=buttons002 onclick=q3i()>semanas</button>",
+    "<button class=buttons002 onclick=q4i()>naranja</button>",
+    "<button class=buttons002 onclick=q5c()>división</button>"];
 
 var a4 = ["<button class=buttons002 onclick=q1i()>fresco</button>",
-    "<button class=buttons002 onclick=q2i()>2</button>",
-    "<button class=buttons002 onclick=q3i()>14</button>",
-    "<button class=buttons002 onclick=q4i()>1</button>",
-    "<button class=buttons002 onclick=q5i()>2</button>"];
+    "<button class=buttons002 onclick=q2i()>calor</button>",
+    "<button class=buttons002 onclick=q3i()>horas</button>",
+    "<button class=buttons002 onclick=q4c()>amarillo</button>",
+    "<button class=buttons002 onclick=q5i()>fracción</button>"];
 
 var c = ["¡¡ Excelente !!", "¡¡ Excelente !!", "¡¡ Excelente !!", "¡¡ Excelente !!", "¡¡ Excelente !!"];
 var i = [" ¡¡ Intenta de nuevo !!", " ¡¡ Intenta de nuevo !!", " ¡¡ Intenta de nuevo !!", " ¡¡ Intenta de nuevo !!", " ¡¡ Intenta de nuevo !!"];
@@ -118,7 +118,7 @@ function q3i() {
     option002.innerHTML = "";
     option003.innerHTML = "";
     option004.innerHTML = "";
-    next001.innerHTML = "<button class=buttons001 onclick=new004()Siguiente</button>";
+    next001.innerHTML = "<button class=buttons001 onclick=new004()>Siguiente</button>";
 }
 
 function new004() {
