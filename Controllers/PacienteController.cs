@@ -65,6 +65,7 @@ namespace DigiLearn.Controllers
             List<ActividadReconocimientoVocales> LActRVocales = null;
             List<Memory> LActMemory = null;
             List<Sumas> LActSumas = null;
+            List<Frases> LActFrases = null;
             List<ActividadesView> All = new();
 
             LActRAnim = _context.ActividadReconocimientoAnimales.Where
@@ -77,6 +78,9 @@ namespace DigiLearn.Controllers
                (z => z.ProfesionalId.Equals(currentUser.Id) && z.PacienteId.Equals(id)).ToList();
                    
             LActSumas = _context.Sumas.Where
+               (z => z.ProfesionalId.Equals(currentUser.Id) && z.PacienteId.Equals(id)).ToList();
+
+            LActFrases = _context.Frases.Where
                (z => z.ProfesionalId.Equals(currentUser.Id) && z.PacienteId.Equals(id)).ToList();
 
             foreach (var item in LActRAnim)
@@ -111,6 +115,14 @@ namespace DigiLearn.Controllers
                 act.Nombre = item.Nombre;
                 All.Add(act);
             }
+            foreach (var item in LActFrases)
+            {
+                ActividadesView act = new ActividadesView();
+                act.Fecha = item.FechaRealizacion.ToString();
+                act.Actividad = item.ActividadId.ToString();
+                act.Nombre = item.Nombre;
+                All.Add(act);
+            }
             ViewBag.actFull = All;
 
             int cont = 0;
@@ -129,7 +141,6 @@ namespace DigiLearn.Controllers
                 ViewBag.Vacio = null;
             }
           
-
              if (paci != null)
             {
                 PacienteView pacView = new();
@@ -141,8 +152,7 @@ namespace DigiLearn.Controllers
                 pacView.FechaCreacion = paci.FechaCreacion;
                 pacView.Estado = paci.Estado;
                 //return RedirectToAction("Details",pacView);
-              
-
+           
                 return View(pacView);
             }
             return BadRequest("Paciente no encontrado");

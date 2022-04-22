@@ -18,7 +18,6 @@ namespace DigiLearn.Models
         public string ProfesionalId { get; set; }
         [Required]
         public int PacienteId { get; set; }
-
         [Display(Name = "Juego de Memoria")]
         public string Nombre { get; set; }
 

@@ -29,13 +29,15 @@ namespace DigiLearn.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Save(DateTime fechaRealizacion, int pacienteId)
+        public async Task<IActionResult> Save(DateTime fechaRealizacion, int pacienteId, string nombre)
         {
+            nombre = "Actividad de Frases";
             Frases frases = new()
             {
                 //ActividadId = actividadId,
                 FechaRealizacion = fechaRealizacion,
-                PacienteId = pacienteId
+                PacienteId = pacienteId,
+                Nombre = nombre
             };
 
             if (ModelState.IsValid)

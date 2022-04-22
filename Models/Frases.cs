@@ -15,5 +15,7 @@ namespace DigiLearn.Models
         public string ProfesionalId { get; set; }
         [Required]
         public int PacienteId { get; set; }
+        [Display(Name = "Actividad de Frases")]
+        public string Nombre { get; set; }
     }
 }
