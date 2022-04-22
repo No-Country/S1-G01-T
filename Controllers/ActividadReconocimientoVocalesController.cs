@@ -35,14 +35,16 @@ namespace DigiLearn.Controllers
         // POST: ActividadReconocimientoAnimales/Save
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Save(DateTime fechaRealizacion, int pacienteId)
+        public async Task<IActionResult> Save(DateTime fechaRealizacion, int pacienteId,string nombre)
         {
+            nombre = "Reconocimiento de Vocales";
             ActividadReconocimientoVocales actividadReconocimientoVocales = new()
             {
                 //ActividadId = actividadId,
                 // ¿Nivel de dificultad de la actividad?
                 FechaRealizacion = fechaRealizacion,
-                PacienteId = pacienteId
+                PacienteId = pacienteId,
+                 Nombre = nombre
             };
 
             if (ModelState.IsValid)

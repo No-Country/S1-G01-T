@@ -13,6 +13,9 @@ namespace DigiLearn.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ActividadId { get; set; }
 
+        [Display(Name = "Reconocimiento de Animales")]
+        public string Nombre { get; set; }
+
         // ¿Nivel de dificultad de la actividad?
 
         [Required]

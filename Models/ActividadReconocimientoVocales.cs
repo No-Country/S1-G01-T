@@ -12,6 +12,8 @@ namespace DigiLearn.Models
             public DateTime FechaRealizacion { get; set; }
             public string ProfesionalId { get; set; }
             public int PacienteId { get; set; }
+        [Display(Name = "Reconocimiento de Vocales")]
+        public string Nombre { get; set; }
 
     }
 }

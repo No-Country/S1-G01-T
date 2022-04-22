@@ -35,14 +35,16 @@ namespace DigiLearn.Controllers
         //POST: Memory/Save
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Save(DateTime fechaRealizacion, int pacienteId)
+        public async Task<IActionResult> Save(DateTime fechaRealizacion, int pacienteId, string nombre)
         {
+            nombre = "Juego de memoria";
             Memory memory = new()
             {
                 //ActividadId = actividadId,
                 // ¿Nivel de dificultad de la actividad?
                 FechaRealizacion = fechaRealizacion,
-                PacienteId = pacienteId
+                PacienteId = pacienteId,
+                Nombre=nombre
             };
 
             if (ModelState.IsValid)

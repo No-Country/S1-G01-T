@@ -60,8 +60,77 @@ namespace DigiLearn.Controllers
             var currentUser = await _userManager.GetUserAsync(HttpContext.User);
             var paci = await _context.Pacientes.Where(z => 
                                 z.ProfesionalId.Equals(currentUser.Id) && z.PacienteId.Equals(id)).FirstOrDefaultAsync();
+            
+            List<ActividadReconocimientoAnimales> LActRAnim = null;
+            List<ActividadReconocimientoVocales> LActRVocales = null;
+            List<Memory> LActMemory = null;
+            List<Sumas> LActSumas = null;
+            List<ActividadesView> All = new();
 
-            if (paci != null)
+            LActRAnim = _context.ActividadReconocimientoAnimales.Where
+               (z => z.ProfesionalId.Equals(currentUser.Id) && z.PacienteId.Equals(id)).ToList();
+           
+            LActRVocales = _context.ActividadReconocimientoVocales.Where
+               (z => z.ProfesionalId.Equals(currentUser.Id) && z.PacienteId.Equals(id)).ToList();
+
+            LActMemory = _context.Memory.Where
+               (z => z.ProfesionalId.Equals(currentUser.Id) && z.PacienteId.Equals(id)).ToList();
+                   
+            LActSumas = _context.Sumas.Where
+               (z => z.ProfesionalId.Equals(currentUser.Id) && z.PacienteId.Equals(id)).ToList();
+
+            foreach (var item in LActRAnim)
+            {
+                ActividadesView act = new ActividadesView();
+                act.Fecha = item.FechaRealizacion.ToString();
+                act.Actividad = item.ActividadId.ToString();
+                act.Nombre = item.Nombre;
+                All.Add(act);
+            }
+            foreach (var item in LActRVocales)
+            {
+                ActividadesView act = new ActividadesView();
+                act.Fecha = item.FechaRealizacion.ToString();
+                act.Actividad = item.ActividadId.ToString();
+                act.Nombre = item.Nombre;
+                All.Add(act);
+            }
+            foreach (var item in LActMemory)
+            {
+                ActividadesView act = new ActividadesView();
+                act.Fecha = item.FechaRealizacion.ToString();
+                act.Actividad = item.ActividadId.ToString();
+                act.Nombre = item.Nombre;
+                All.Add(act);
+            }
+            foreach (var item in LActSumas)
+            {
+                ActividadesView act = new ActividadesView();
+                act.Fecha = item.FechaRealizacion.ToString();
+                act.Actividad = item.ActividadId.ToString();
+                act.Nombre = item.Nombre;
+                All.Add(act);
+            }
+            ViewBag.actFull = All;
+
+            int cont = 0;
+            foreach(var item in All)
+            {
+                cont++;
+                
+            }
+            if (cont > 0)
+            {
+                ViewBag.Vacio = 1;
+              
+            }
+            else
+            {
+                ViewBag.Vacio = null;
+            }
+          
+
+             if (paci != null)
             {
                 PacienteView pacView = new();
                 pacView.PacienteId = paci.PacienteId;
@@ -72,6 +141,7 @@ namespace DigiLearn.Controllers
                 pacView.FechaCreacion = paci.FechaCreacion;
                 pacView.Estado = paci.Estado;
                 //return RedirectToAction("Details",pacView);
+              
 
                 return View(pacView);
             }
