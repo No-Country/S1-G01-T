@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DigiLearn.Models
 {
-    public class Memory
+    public class Frases
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -18,8 +15,7 @@ namespace DigiLearn.Models
         public string ProfesionalId { get; set; }
         [Required]
         public int PacienteId { get; set; }
-        [Display(Name = "Juego de Memoria")]
+        [Display(Name = "Actividad de Frases")]
         public string Nombre { get; set; }
-
     }
 }

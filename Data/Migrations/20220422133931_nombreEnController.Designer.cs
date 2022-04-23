@@ -4,14 +4,16 @@ using DigiLearn.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DigiLearn.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220422133931_nombreEnController")]
+    partial class nombreEnController
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,11 +70,7 @@ namespace DigiLearn.Data.Migrations
                     b.ToTable("ActividadReconocimientoVocales");
                 });
 
-<<<<<<< HEAD
-            modelBuilder.Entity("DigiLearn.Models.ActividadRelacionImagenPalabra", b =>
-=======
             modelBuilder.Entity("DigiLearn.Models.Frases", b =>
->>>>>>> 20c5bf39bf0768ee6b84570db143083ef2668d37
                 {
                     b.Property<int>("ActividadId")
                         .ValueGeneratedOnAdd()
@@ -82,12 +80,9 @@ namespace DigiLearn.Data.Migrations
                     b.Property<DateTime>("FechaRealizacion")
                         .HasColumnType("datetime2");
 
-<<<<<<< HEAD
-=======
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
->>>>>>> 20c5bf39bf0768ee6b84570db143083ef2668d37
                     b.Property<int>("PacienteId")
                         .HasColumnType("int");
 
@@ -97,11 +92,7 @@ namespace DigiLearn.Data.Migrations
 
                     b.HasKey("ActividadId");
 
-<<<<<<< HEAD
-                    b.ToTable("ActividadRelacionImagenPalabra");
-=======
                     b.ToTable("Frases");
->>>>>>> 20c5bf39bf0768ee6b84570db143083ef2668d37
                 });
 
             modelBuilder.Entity("DigiLearn.Models.Memory", b =>

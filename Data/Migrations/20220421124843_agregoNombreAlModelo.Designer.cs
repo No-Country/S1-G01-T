@@ -4,19 +4,21 @@ using DigiLearn.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DigiLearn.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220421124843_agregoNombreAlModelo")]
+    partial class agregoNombreAlModelo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.16")
+                .HasAnnotation("ProductVersion", "5.0.15")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("DigiLearn.Models.ActividadReconocimientoAnimales", b =>
@@ -54,9 +56,6 @@ namespace DigiLearn.Data.Migrations
                     b.Property<DateTime>("FechaRealizacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("PacienteId")
                         .HasColumnType("int");
 
@@ -66,42 +65,6 @@ namespace DigiLearn.Data.Migrations
                     b.HasKey("ActividadId");
 
                     b.ToTable("ActividadReconocimientoVocales");
-                });
-
-<<<<<<< HEAD
-            modelBuilder.Entity("DigiLearn.Models.ActividadRelacionImagenPalabra", b =>
-=======
-            modelBuilder.Entity("DigiLearn.Models.Frases", b =>
->>>>>>> 20c5bf39bf0768ee6b84570db143083ef2668d37
-                {
-                    b.Property<int>("ActividadId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("FechaRealizacion")
-                        .HasColumnType("datetime2");
-
-<<<<<<< HEAD
-=======
-                    b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
-
->>>>>>> 20c5bf39bf0768ee6b84570db143083ef2668d37
-                    b.Property<int>("PacienteId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ProfesionalId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ActividadId");
-
-<<<<<<< HEAD
-                    b.ToTable("ActividadRelacionImagenPalabra");
-=======
-                    b.ToTable("Frases");
->>>>>>> 20c5bf39bf0768ee6b84570db143083ef2668d37
                 });
 
             modelBuilder.Entity("DigiLearn.Models.Memory", b =>
@@ -203,9 +166,6 @@ namespace DigiLearn.Data.Migrations
 
                     b.Property<DateTime>("FechaRealizacion")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PacienteId")
                         .HasColumnType("int");

@@ -57,17 +57,16 @@
         <h5 class="card-title">Actividades Realizadas</h5>
         @*aqui deberiamos agregar las metricas obtenidas por cada actividad realizada y su fecha
         mas el campo de agregar observacion*@
-    <form method="post">
-        <div class="row">
-            <div class="col">
-                <div class="btn-group" style="float: right;">
-                    <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <form method="post">
+            <div class="row">
+                <div class="col">
+                    <div class="btn-group" style="float: right;">
+                        <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         Asignar Actividad
-                    </button>
+                        </button>
 
-                    @*<input type="number" name="actividadId" value="1" hidden />*@
-                    <input type="datetime" name="fechaRealizacion" value="@DateTime.Now" hidden />
-                    <input type="number" name="pacienteId" value="@Model.PacienteId" hidden />
+                     <input type="datetime" name="fechaRealizacion" value="@DateTime.Now" hidden />
+                     <input type="number" name="pacienteId" value="@Model.PacienteId" hidden />
 
                     <ul class="dropdown-menu">
                         <li><h6 class="dropdown-header">Inicial</h6></li>
@@ -77,27 +76,46 @@
                         <li><hr class="dropdown-divider"></li>
                         <li><h6 class="dropdown-header">Primario</h6></li>
                         <li><input type="submit" class="dropdown-item" asp-controller="Sumas" asp-action="Save" value="Sumas" /></li>
+                        <li><input type="submit" class="dropdown-item" asp-controller="Frases" asp-action="Save" value="Frases" /></li>
                         <li><input type="submit" class="dropdown-item" asp-controller="ActividadRelacionImagenPalabra" asp-action="Save" value="Relación Imagen y Palabra" /></li>
                     </ul>
 
-                </div>
-            </div>
-        </div>
-    </form>
-       
-
-        <div class="row">
-            <div class="col-6">
-                <label asp-for="FechaCreacion" class="control-label">Fecha Realización</label>
-                <input class="form-control" asp-for="FechaCreacion" readonly />
-            </div>
-            <div class="col-6">
-                <label asp-for="Estado" class="control-label">Estado</label>
-                <input class="form-check-inline" asp-for="Estado" readonly />
-            </div>
-        </div>
-    </div>
-    </div>
+                     </div>
+                 </div>
+                <div class="input-group">
+                    <div class="container">
+                        <div class="row">
+                             <div class="col-6">
+                                 @if (ViewData["Vacio"] != null) { 
+                                       <table class="table table-bordered border-danger  text-left">
+                                            <thead class="table-warning border-danger">
+                                                <tr>
+                                                    <th scope="col">Nombre</th>
+                                                    <th scope="col">Fecha y Hora</th>
+                                                </tr>
+                                            </thead>
+                                            @foreach (var item in (IEnumerable<ActividadesView>)ViewData["actFull"])
+                                             {
+                                                <tbody>
+                                                    <tr>
+                                                        <td>@item.Nombre</td>
+                                                        <td>@item.Fecha</td>
+                                                    </tr>
+                                                </tbody>
+                                             }
+                                        </table>
+                                  }
+                                  else {
+                                       <p style="color: red;">No hay actividades realizadas aún</p>
+                                  }
+                              </div>
+                         </div>
+                      </div>
+                 </div>
+             </div>
+         </form>
+     </div>
+</div>
 <div>
     <a asp-action="Index" style="font-size: 1.2em; color: orangered"><i class="far fa-arrow-alt-circle-left"></i>Listado de Pacientes</a>
 </div>
