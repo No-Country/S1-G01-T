@@ -29,9 +29,9 @@ namespace DigiLearn.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Save(DateTime fechaRealizacion, int pacienteId, string nombre)
+        public async Task<IActionResult> Save(DateTime fechaRealizacion, int pacienteId)
         {
-            nombre = "Actividad de Frases";
+            string nombre = "Actividad de Frases";
             Frases frases = new()
             {
                 //ActividadId = actividadId,
@@ -103,9 +103,9 @@ namespace DigiLearn.Controllers
         //    }
         //}
 
-        private bool FrasesExists(int id)
-        {
-            return _context.Frases.Any(e => e.ActividadId == id);
-        }
+        //private bool FrasesExists(int id)
+        //{
+        //    return _context.Frases.Any(e => e.ActividadId == id);
+        //}
     }
 }

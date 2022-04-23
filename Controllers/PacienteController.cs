@@ -66,6 +66,7 @@ namespace DigiLearn.Controllers
             List<Memory> LActMemory = null;
             List<Sumas> LActSumas = null;
             List<Frases> LActFrases = null;
+            List<ActividadRelacionImagenPalabra> LActImgsWords = null;
             List<ActividadesView> All = new();
 
             LActRAnim = _context.ActividadReconocimientoAnimales.Where
@@ -83,9 +84,12 @@ namespace DigiLearn.Controllers
             LActFrases = _context.Frases.Where
                (z => z.ProfesionalId.Equals(currentUser.Id) && z.PacienteId.Equals(id)).ToList();
 
+            LActImgsWords = _context.ActividadRelacionImagenPalabra.Where
+               (z => z.ProfesionalId.Equals(currentUser.Id) && z.PacienteId.Equals(id)).ToList();
+
             foreach (var item in LActRAnim)
             {
-                ActividadesView act = new ActividadesView();
+                ActividadesView act = new ();
                 act.Fecha = item.FechaRealizacion.ToString();
                 act.Actividad = item.ActividadId.ToString();
                 act.Nombre = item.Nombre;
@@ -93,7 +97,7 @@ namespace DigiLearn.Controllers
             }
             foreach (var item in LActRVocales)
             {
-                ActividadesView act = new ActividadesView();
+                ActividadesView act = new ();
                 act.Fecha = item.FechaRealizacion.ToString();
                 act.Actividad = item.ActividadId.ToString();
                 act.Nombre = item.Nombre;
@@ -101,7 +105,7 @@ namespace DigiLearn.Controllers
             }
             foreach (var item in LActMemory)
             {
-                ActividadesView act = new ActividadesView();
+                ActividadesView act = new ();
                 act.Fecha = item.FechaRealizacion.ToString();
                 act.Actividad = item.ActividadId.ToString();
                 act.Nombre = item.Nombre;
@@ -109,7 +113,7 @@ namespace DigiLearn.Controllers
             }
             foreach (var item in LActSumas)
             {
-                ActividadesView act = new ActividadesView();
+                ActividadesView act = new ();
                 act.Fecha = item.FechaRealizacion.ToString();
                 act.Actividad = item.ActividadId.ToString();
                 act.Nombre = item.Nombre;
@@ -117,7 +121,15 @@ namespace DigiLearn.Controllers
             }
             foreach (var item in LActFrases)
             {
-                ActividadesView act = new ActividadesView();
+                ActividadesView act = new ();
+                act.Fecha = item.FechaRealizacion.ToString();
+                act.Actividad = item.ActividadId.ToString();
+                act.Nombre = item.Nombre;
+                All.Add(act);
+            }
+            foreach (var item in LActImgsWords)
+            {
+                ActividadesView act = new();
                 act.Fecha = item.FechaRealizacion.ToString();
                 act.Actividad = item.ActividadId.ToString();
                 act.Nombre = item.Nombre;

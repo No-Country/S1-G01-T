@@ -35,9 +35,9 @@ namespace DigiLearn.Controllers
         // POST: ActividadReconocimientoAnimales/Save
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Save(DateTime fechaRealizacion, int pacienteId, string nombre)              //int actividadId
+        public async Task<IActionResult> Save(DateTime fechaRealizacion, int pacienteId)              //int actividadId
         {
-            nombre = "Reconocimiento de Animales";
+            string nombre = "Reconocimiento de Animales";
             ActividadReconocimientoAnimales actividadReconocimientoAnimales = new()
             {
                 //ActividadId = actividadId,
@@ -189,9 +189,9 @@ namespace DigiLearn.Controllers
         //    return RedirectToAction(nameof(Index));
         //}
 
-        private bool ActividadReconocimientoAnimalesExists(int id)
-        {
-            return _context.ActividadReconocimientoAnimales.Any(e => e.ActividadId == id);
-        }
+        //private bool ActividadReconocimientoAnimalesExists(int id)
+        //{
+        //    return _context.ActividadReconocimientoAnimales.Any(e => e.ActividadId == id);
+        //}
     }
 }

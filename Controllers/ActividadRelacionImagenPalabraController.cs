@@ -36,12 +36,14 @@ namespace DigiLearn.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Save(DateTime fechaRealizacion, int pacienteId)              //int actividadId
         {
+            string nombre = "Relacion Imagen con Palabra";
             ActividadRelacionImagenPalabra actividadRelacionImagenPalabra = new()
             {
                 //ActividadId = actividadId,
                 // ¿Nivel de dificultad de la actividad?
                 FechaRealizacion = fechaRealizacion,
-                PacienteId = pacienteId
+                PacienteId = pacienteId,
+                Nombre = nombre
             };
 
             if (ModelState.IsValid)
@@ -134,10 +136,10 @@ namespace DigiLearn.Controllers
         //    }
         //}
 
-        private bool ActividadRelacionImagenPalabraExists(int id)
-        {
-            return _context.ActividadRelacionImagenPalabra.Any(e => e.ActividadId == id);
-        }
+        //private bool ActividadRelacionImagenPalabraExists(int id)
+        //{
+        //    return _context.ActividadRelacionImagenPalabra.Any(e => e.ActividadId == id);
+        //}
 
     }
 }

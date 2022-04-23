@@ -6,14 +6,13 @@ namespace DigiLearn.Models
 {
     public class ActividadReconocimientoVocales
     {
-            [Key]
-            [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-            public int ActividadId { get; set; }
-            public DateTime FechaRealizacion { get; set; }
-            public string ProfesionalId { get; set; }
-            public int PacienteId { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ActividadId { get; set; }
         [Display(Name = "Reconocimiento de Vocales")]
         public string Nombre { get; set; }
-
+        public DateTime FechaRealizacion { get; set; }
+        public string ProfesionalId { get; set; }
+        public int PacienteId { get; set; }
     }
 }

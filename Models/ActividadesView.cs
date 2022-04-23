@@ -12,7 +12,7 @@ namespace DigiLearn.Models
         public string Actividad { get; set; }
         [Display(Name = "Fecha de Realizacion")]
         public string Fecha { get; set; }
-        public string controlador { get; set; }
+        public string Controlador { get; set; }
         [Display(Name = "ID de Actividad")]
         public int IdActividad { get; set; }
         [Display(Name = "Nombre")]

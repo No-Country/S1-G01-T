@@ -9,13 +9,13 @@ namespace DigiLearn.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ActividadId { get; set; }
+        [Display(Name = "Actividad de Frases")]
+        public string Nombre { get; set; }
         [Required]
         public DateTime FechaRealizacion { get; set; }
         [Required]
         public string ProfesionalId { get; set; }
         [Required]
         public int PacienteId { get; set; }
-        [Display(Name = "Actividad de Frases")]
-        public string Nombre { get; set; }
     }
 }

@@ -35,9 +35,9 @@ namespace DigiLearn.Controllers
         //POST: Sumas/Save
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Save(DateTime fechaRealizacion, int pacienteId, string nombre)
+        public async Task<IActionResult> Save(DateTime fechaRealizacion, int pacienteId)
         {
-            nombre = "Juego de Sumas";
+            string nombre = "Juego de Sumas";
             Sumas sumas = new()
             {
                 //ActividadId = actividadId,
@@ -189,9 +189,9 @@ namespace DigiLearn.Controllers
         //    return RedirectToAction(nameof(Index));
         //}
 
-        private bool SumasExists(int id)
-        {
-            return _context.Sumas.Any(e => e.ActividadId == id);
-        }
+        //private bool SumasExists(int id)
+        //{
+        //    return _context.Sumas.Any(e => e.ActividadId == id);
+        //}
     }
 }
