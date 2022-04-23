@@ -16,15 +16,15 @@ namespace DigiLearn.Data
 
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<Respuestas> Respuestas { get; set; }
-        public DbSet<DigiLearn.Models.Memory> Memory { get; set; }
-        public DbSet<DigiLearn.Models.ActividadReconocimientoAnimales> ActividadReconocimientoAnimales { get; set; }
+        public DbSet<Memory> Memory { get; set; }
+        public DbSet<ActividadReconocimientoAnimales> ActividadReconocimientoAnimales { get; set; }
 
-        public DbSet<DigiLearn.Models.ActividadReconocimientoVocales> ActividadReconocimientoVocales { get; set; }
+        public DbSet<ActividadReconocimientoVocales> ActividadReconocimientoVocales { get; set; }
 
-        public DbSet<DigiLearn.Models.Sumas> Sumas { get; set; }
+        public DbSet<Sumas> Sumas { get; set; }
 
         public DbSet<ActividadRelacionImagenPalabra> ActividadRelacionImagenPalabra { get; set; }
-        public DbSet<DigiLearn.Models.Frases> Frases { get; set; }
+        public DbSet<Frases> Frases { get; set; }
         //public DbSet<Preguntas> Preguntas { get; set; }
         //public DbSet<>  { get; set; }
 
