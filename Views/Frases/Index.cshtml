@@ -1,0 +1,86 @@
+﻿@model IEnumerable<DigiLearn.Models.Frases>
+
+@{
+    ViewData["Title"] = "Index";
+}
+    <style>
+        #frame001 {
+            background-image: url('/img/favicon.png');
+            background-color: white;
+            background-size: 30% 30%;
+            background-position-x: right;
+            background-position-y:center;
+            background-repeat: no-repeat;
+            border: 4px solid black;
+            width: 500px;
+            height: 500px;
+            border-radius: 10px;
+            padding: 10px;
+            margin: auto;
+        }
+
+        .buttons001 {
+            padding: 5px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 100px;
+            align-items:center;
+
+        }
+
+        .buttons002 {
+        width:80px;
+        height:50px;
+        border: 1px solid #000;
+        font-size:20px;
+        margin-bottom: 10px;
+        cursor:pointer;
+        color:forestgreen;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        }
+
+        #text001 {
+            text-align: center;
+        }
+
+        #text002 {
+            text-align: left;
+        }
+
+        #green001 {
+            color: green;
+        }
+
+        #red001 {
+            color: red;
+        }
+    </style>
+    <body>
+    <div id="frame001">
+        <div id="text001">
+            <h3>Actividad de Frases</h3>
+            <text>Puntaje: <text id="score001">0</text>
+        <hr />
+                <div id="message001"></div><br />
+            </div>
+        <div id="text002">
+            <div id="question001"></div>
+            <div id="option001"></div>
+            <div id="option002"></div>
+            <div id="option003"></div>
+            <div id="option004"></div>
+            <div id="answer001"></div>
+            <div id="text001">
+                <div id="disappear001"><button class="buttons001" onclick="begin001()">Comenzar</button></div>
+            </div>
+            <div id="next001"></div>
+        </div>
+        </div>
+</body>
+<div>
+    <br />
+    <a asp-controller="Paciente" asp-action="Details" asp-route-id="@ViewData["PacienteId"]" style="font-size: 1.2em; color: orangered"><i class="far fa-arrow-alt-circle-left"></i>Regresar</a>
+</div>
+    <script src="~/js/frases.js"></script>

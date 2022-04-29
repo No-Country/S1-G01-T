@@ -1,0 +1,46 @@
+﻿@model IEnumerable<DigiLearn.Models.Memory>
+
+@{
+    ViewData["Title"] = "Actividad";
+}
+
+<style>
+    .grid {
+        display: block;
+        flex-wrap: wrap;
+        width: 80%;
+        height: 80%;
+        justify-content: space-between;
+        margin: auto;
+     }
+
+    .memory-img {
+        height: 23%;
+        width: 23%;
+    }
+</style>
+
+<h3>Juego de Memoria</h3>
+
+<div class="col-8">
+    <div class="col-4" style="float: left; width: 30%; outline: green solid thin; border-radius: 3px 3px"><h5>Puntaje: <span id="result"></span></h5></div>
+    <br />
+    <br />
+    <div class="col-2" style="float: left;">
+        <button class="btn btn-outline-success" onclick="location.reload()">Reiniciar</button>
+    </div>
+</div>
+
+<br />
+<br />
+
+<div class="card col-8 border-primary">
+    <div class="grid pr-0"></div>
+</div>
+
+<div>
+    <br />
+    <a asp-controller="Paciente" asp-action="Details" asp-route-id="@ViewData["PacienteId"]" style="font-size: 1.2em; color: orangered"><i class="far fa-arrow-alt-circle-left"></i>Regresar</a>
+</div>
+
+<script src="~/js/app.js"></script>

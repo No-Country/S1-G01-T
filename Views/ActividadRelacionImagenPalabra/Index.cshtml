@@ -1,0 +1,93 @@
+﻿@*@model IEnumerable<DigiLearn.Models.ActividadRelacionImagenPalabra>*@
+@model DigiLearn.ModelsView.PacienteView
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Actividad";
+}
+
+<h3>Actividad: Relacionar imagen con palabra</h3>
+
+<div class="container mb-3 mb-md-0" id="gameContainer">
+    <!--  MENU  -->
+    <div id="menuContainer" class="container col-12 col-md-8">
+        <!-- START / EXIT -->
+        <div class="row justify-content-evenly align-content-center" style="height: 55vh">
+            <button type="button" id="startBtn" class="btn btn-success rounded-pill p-1 col-4">Comenzar</button>
+            <button type="button" id="exitBtn" class="btn btn-outline-secondary rounded-pill p-1 col-4" data-bs-toggle="modal" data-bs-target="#confirmExitModal">Salir</button>
+        </div>
+        
+    </div>
+
+    <!-- GAME -->
+    <div class="row row-cols-1 d-flex mx-auto justify-content-center mt-md-4" >
+        <!-- IMAGE -->
+        <div class="col-12 col-md-10 d-flex mx-auto justify-content-center mt-2 mt-md-4" style="height: 70%">
+            <div id="imgContainer"></div>
+        </div>
+        <!-- OPTIONS -->
+        <div id="optionsContainer" class="btn-group btn-group-lg col-12 col-md-6 col-lg-4 mt-4 mx-auto d-flex justify-content-between" role="group" aria-label="Basic radio toggle button group" style="height: 20%">
+
+            <input type="radio" id="optionA" class="btn-check" name="Option" value="1" autocomplete="off">
+            <label id="optA" class="btn btn-outline-primary rounded-pill p-1" for="optionA">
+            </label>
+
+            <input type="radio" id="optionB" class="btn-check" name="Option" value="2" autocomplete="off">
+            <label id="optB" class="btn btn-outline-primary rounded-pill mx-3 p-1" for="optionB">
+            </label>
+
+            <input type="radio" id="optionC" class="btn-check" name="Option" value="3" autocomplete="off">
+            <label id="optC" class="btn btn-outline-primary rounded-pill p-1" for="optionC">
+            </label>
+
+        </div>
+        <!-- NEXT / LAST -->
+        <div id="formContainer" style="height: 10%" class="row justify-content-end">
+            <form method="post" class="row row-cols-2 row-cols-md-3 mt-5 mx-0 px-0 justify-content-end">
+                <input type="datetime" name="fechaRealizacion" value="@DateTime.Now" hidden />
+                <input type="number" name="pacienteId" value=@ViewData["PacienteId"] hidden />
+                <button type="button" id="nextBtn" onclick="showNextImg()" class="btn btn-outline-secondary col-6 col-md-4">Siguiente</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="mt-4 mt-md-0">
+    <a asp-controller="Paciente" asp-action="Details" asp-route-id="@ViewData["PacienteId"]" style="font-size: 1.2em; color: orangered"><i class="far fa-arrow-alt-circle-left"></i>Regresar</a>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="confirmExitModal" tabindex="-1" aria-labelledby="confirmExitModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header py-3">
+                <h5 class="modal-title" id="confirmExitModalLabel">Salir de la actividad</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex">
+                @*<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="blue" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-3 my-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                </svg>*@
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-info-circle align-self-center me-2 text-info" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                </svg>
+                @*<i class="bi bi-info-circle"></i>*@
+                <div>
+                    <p class="my-2 ms-2">Estás por abandonar la actividad.<br />¿Seguro deseas salir de la actividad?</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <a asp-controller="Paciente" asp-action="Details" asp-route-id="@ViewData["PacienteId"]" type="button" class="btn btn-outline-secondary salir" id="salir" UseSubmitBehavior="false" data-dismiss="modal">Salir</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/actividadRelacionImagenPalabra.js"></script>
